@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Merriweather:wght@300;400;700;900&display=swap"
         rel="stylesheet">
 </head>
 
@@ -28,8 +28,9 @@
                 </a>
             </div>
             <div class="nav-links">
-                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="index.html" class="nav-link">Inicio</a>
                 <a href="store.html" class="nav-link">Tienda</a>
+                <a href="about.html" class="nav-link">Sobre Nosotros</a>
                 <!-- User Profile (shown when logged in) -->
                 <div id="user-profile" class="user-profile" style="display: none;">
                     <div class="user-info">
@@ -61,15 +62,11 @@
                 </div>
 
                 <h1 class="hero-title animate-fade-in">
-                    Servidor de <span class="gradient-text">Hytale</span> en Español
+                    Servidor <span class="gradient-text">Hytale</span> LATAM
                 </h1>
-                <div class="hero-badge animate-fade-in">
-                    <span class="badge-pulse"></span>
-                    ¡Servidor ya disponible!
-                </div>
                 <p class="hero-description animate-fade-in">
-                    Únete a la comunidad hispanohablante más grande de Hytale. Explora, construye y conquista en un
-                    mundo lleno de aventuras.
+                    Servidor comunitario para LATAM con contenido único y progresión equilibrada. Una experiencia
+                    diseñada desde cero para aventureros latinoamericanos.
                 </p>
 
                 <!-- Server Address -->
@@ -79,7 +76,7 @@
                         Dirección del Servidor
                     </p>
                     <div class="server-address-box" onclick="copyServerAddress()"
-                        style="display: inline-flex; align-items: center; gap: var(--spacing-md); background: rgba(26, 26, 36, 0.8); border: 2px solid rgba(139, 92, 246, 0.5); border-radius: var(--radius-md); padding: var(--spacing-lg) var(--spacing-xl); cursor: pointer; transition: all var(--transition-fast); margin-bottom: var(--spacing-sm);">
+                        style="display: inline-flex; align-items: center; gap: var(--spacing-md); background: rgba(26, 26, 36, 0.8); border: 2px solid rgba(212, 165, 116, 0.5); border-radius: var(--radius-md); padding: var(--spacing-lg) var(--spacing-xl); cursor: pointer; transition: all var(--transition-fast); margin-bottom: var(--spacing-sm);">
                         <span class="server-address"
                             style="font-family: 'Courier New', monospace; font-size: 1.75rem; color: var(--color-accent); font-weight: 700;">play.crontor.com:6906</span>
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -90,7 +87,7 @@
                         </svg>
                     </div>
                     <div class="server-address-box" onclick="copyServerAddressIP()"
-                        style="display: inline-flex; align-items: center; gap: var(--spacing-md); background: rgba(26, 26, 36, 0.8); border: 2px solid rgba(139, 92, 246, 0.5); border-radius: var(--radius-md); padding: var(--spacing-lg) var(--spacing-xl); cursor: pointer; transition: all var(--transition-fast);">
+                        style="display: inline-flex; align-items: center; gap: var(--spacing-md); background: rgba(26, 26, 36, 0.8); border: 2px solid rgba(212, 165, 116, 0.5); border-radius: var(--radius-md); padding: var(--spacing-lg) var(--spacing-xl); cursor: pointer; transition: all var(--transition-fast);">
                         <span class="server-address-ip"
                             style="font-family: 'Courier New', monospace; font-size: 1.75rem; color: var(--color-accent); font-weight: 700;">147.185.221.25:6906</span>
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -109,31 +106,65 @@
         </div>
     </section>
 
+    <!-- Discord Community CTA -->
+    <section class="footer-cta">
+        <div class="container">
+            <div class="glass-card" style="padding: var(--spacing-xl); text-align: center;">
+                <div class="cta-content">
+                    <h2 class="cta-title">¡Únete a Nuestra Comunidad de Discord!</h2>
+                    <p class="cta-description">
+                        Forma parte del centro de la comunidad. Conecta con otros jugadores, entérate de novedades,
+                        participa en eventos y ayuda a construir el futuro del reino junto al equipo y la comunidad.
+
+                    </p>
+                    <a href="https://discord.gg/6cc8HaNAQk" class="btn btn-hero" target="_blank">
+                        Únete a Discord
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Detalles Section -->
     <section class="section" id="detalles">
         <div class="container">
             <h2 class="section-title">Detalles</h2>
             <div class="cards-grid">
-                <div class="card glass-card animate-slide-up">
-                    <div class="card-icon">🏔️</div>
-                    <h3 class="card-title">Survival</h3>
+                <div class="card glass-card">
+                    <div class="card-icon">
+                        <img src="imagenes_hytale/Survival.png" alt="Survival"
+                            style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <h3 class="card-title">Aventura y Supervivencia</h3>
                     <p class="card-description">
-                        Disfruta del modo normal mejorado con otros jugadores, PvP y eventos únicos.
+                        Un mundo persistente donde explorar, construir y progresar junto a otros aventureros. Sistemas
+                        mejorados, eventos dinámicos y una experiencia pensada para jugar en comunidad.
                     </p>
                 </div>
-                <div class="card glass-card animate-slide-up">
-                    <div class="card-icon">🎮</div>
-                    <h3 class="card-title">Minijuegos</h3>
+                <div class="card glass-card">
+                    <div class="card-icon">
+                        <img src="imagenes_hytale/Minijuegos.png" alt="Minijuegos"
+                            style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <h3 class="card-title">Actividades y Desafíos</h3>
                     <p class="card-description">
-                        Compite en emocionantes minijuegos exclusivos del servidor. Juegos del hambre, Skywars, Arenas
-                        con clasificatorias, etc...
+                        Desafíos cooperativos, eventos especiales y actividades diseñadas para poner a prueba tus
+                        habilidades y fomentar el trabajo en equipo.
                     </p>
                 </div>
-                <div class="card glass-card animate-slide-up">
-                    <div class="card-icon">👥</div>
-                    <h3 class="card-title">Comunidad</h3>
+                <div class="card glass-card">
+                    <div class="card-icon">
+                        <img src="imagenes_hytale/Comunidad.png" alt="Comunidad"
+                            style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <h3 class="card-title">Comunidad LATAM</h3>
                     <p class="card-description">
-                        Comparte esta aventura con una comunidad hispanohablante apasionada por Hytale.
+                        Una comunidad latinoamericana activa, cercana y en crecimiento, donde el respeto, la
+                        colaboración y la diversión son parte del reino.
                     </p>
                 </div>
             </div>
@@ -145,38 +176,43 @@
         <div class="container">
             <h2 class="section-title">Características</h2>
             <div class="features-list">
-                <div class="feature-item animate-slide-up">
-                    <div class="feature-content">
-                        <div class="feature-icon-large">🐾</div>
-                        <h3 class="feature-title">Mascotas y monturas</h3>
-                        <p class="feature-description">
-                            Consigue mascotas exclusivas y monta criaturas únicas de este servidor. Algunas monturas las
-                            puedes encontrar y domar en el mundo abierto, pero las más exclusivas solo se pueden
-                            conseguir a través de la tienda. Si quieres una mascota o montura única para ti, puedes
-                            comisionar a uno de nuestros artistas.
-                        </p>
+                <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-lg);">
+                    <div class="feature-item animate-slide-up">
+                        <div class="feature-content">
+                            <div class="feature-icon-large">
+                                <img src="imagenes_hytale/Mascotas_Monturas.png" alt="Mascotas y Monturas"
+                                    style="width: 100%; height: 100%; object-fit: contain;">
+                            </div>
+                            <h3 class="feature-title">Mascotas y monturas</h3>
+                            <p class="feature-description">
+                                Haz que tu aventura se sienta única con mascotas y monturas especiales que te acompañan
+                                en cada camino. Desde compañeros adorables hasta criaturas imponentes, podrás
+                                desbloquear y coleccionar distintas opciones a medida que progresas en el reino.
+
+                                Explora, participa en actividades del servidor y consigue personalizaciones que reflejen
+                                tu estilo. En Crontor, cada aventurero puede tener una presencia propia.
+
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-item animate-slide-up">
-                    <div class="feature-content">
-                        <div class="feature-icon-large">🎯</div>
-                        <h3 class="feature-title">Modos de juego</h3>
-                        <p class="feature-description">
-                            Próximamente
-                        </p>
-                    </div>
-                </div>
-                <div class="feature-item animate-slide-up">
-                    <div class="feature-content">
-                        <div class="feature-icon-large">✨</div>
-                        <h3 class="feature-title">Skins personalizadas</h3>
-                        <p class="feature-description">
-                            Destaca entre la multitud con skins completamente personalizadas. Puedes añadir tu propia
-                            skin de forma gratuita, elegir entre cientos de diseños en nuestra tienda, o solicitar una
-                            skin única creada especialmente para ti por nuestro equipo de diseñadores. Todas las skins
-                            son compatibles con otros servidores, así que tu estilo te acompañará donde quiera que
-                            vayas. Exprésate y crea tu identidad en el mundo de Hytale.
-                        </p>
+                <div class="glass-card" style="padding: var(--spacing-xl);">
+                    <div class="feature-item animate-slide-up">
+                        <div class="feature-content">
+                            <div class="feature-icon-large">
+                                <img src="imagenes_hytale/accesorios.png" alt="Skins Personalizadas"
+                                    style="width: 100%; height: 100%; object-fit: contain;">
+                            </div>
+                            <h3 class="feature-title">Accesorios y Objetos Cosméticos</h3>
+                            <p class="feature-description">
+                                Personaliza tu personaje con una amplia variedad de accesorios cosméticos: capas,
+                                adornos, peluches, objetos decorativos y elementos visuales que no afectan la
+                                jugabilidad.
+
+                                Cada accesorio está diseñado para expresar tu identidad dentro del reino y hacer que tu
+                                aventurero sea verdaderamente único.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -184,49 +220,69 @@
     </section>
 
     <!-- Contribuciones Section -->
-    <section class="section">
+    <section class="section" id="apoyar">
         <div class="container">
-            <div class="section-header">
-                <span class="section-badge">💝 Contribuciones</span>
-                <h2 class="section-title">Apoya el Servidor</h2>
-                <p class="section-description">
-                    Mantén el servidor en línea. Tu apoyo ayuda a pagar el hosting y desarrollar nuevas modalidades de
-                    juego para la comunidad.
-                </p>
-            </div>
-            <div style="text-align: center; margin-top: var(--spacing-xl);">
-                <a href="store.html#donaciones" class="btn btn-hero" style="display: inline-flex;">
-                    💝 Hacer una Donación
-                </a>
+            <div class="glass-card" style="padding: var(--spacing-xl); text-align: center;">
+                <div class="section-header">
+                    <span class="section-badge"></span>
+                    <h2 class="section-title">Apoya el Servidor</h2>
+                    <p class="section-description">
+                        Apoya el crecimiento del reino y ayuda a que el servidor siga evolucionando. Las contribuciones
+                        permiten mantener la infraestructura, mejorar la estabilidad y desarrollar nuevas experiencias
+                        pensadas para la comunidad LATAM.
+
+                        Cada aporte es voluntario y va directamente al crecimiento del proyecto.
+                    </p>
+                    <div
+                        style="margin-top: var(--spacing-md); padding: var(--spacing-md); background: rgba(212, 165, 116, 0.1); border-radius: var(--radius-md); border: 1px solid rgba(212, 165, 116, 0.3);">
+                        <p style="font-size: 1rem; font-weight: 600; margin-bottom: var(--spacing-sm);">
+                            ⚖️ Juego Justo
+                        </p>
+                        <p style="font-size: 0.95rem; opacity: 0.9;">
+                            Las contribuciones y beneficios ofrecidos no otorgan ventajas competitivas dentro del juego.
+                            Crontor no es pay-to-win.
+                        </p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: var(--spacing-xl);">
+                    <a href="store.html" class="btn btn-hero">
+                        💝 Hacer una Donación
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <p style="font-size: 0.875rem; margin-top: var(--spacing-md); opacity: 0.7;">
+                        Al contribuir, aceptas los <a href="terms.html"
+                            style="color: var(--color-accent); text-decoration: underline;">términos y condiciones</a>
+                        del servicio.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-
-    <!-- Footer CTA -->
-    <section class="footer-cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">¡Únete a Nuestra Comunidad de Discord!</h2>
-                <p class="cta-description">
-                    Conecta con otros jugadores, participa en eventos exclusivos y mantente al día con las últimas
-                    novedades del servidor.
-                </p>
-                <a href="https://discord.gg/6cc8HaNAQk" class="btn btn-hero" target="_blank">
-                    Únete a Discord
-                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="footer-text">La mejor experiencia de Hytale en español</p>
+            <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                <h3 style="font-size: 1.5rem; margin-bottom: var(--spacing-md);">Crontor</h3>
+                <p style="margin-bottom: var(--spacing-md);">Servidor Hytale LATAM</p>
+                <div style="display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap;">
+                    <a href="index.html" style="color: var(--color-accent); text-decoration: none;">Inicio</a>
+                    <a href="store.html" style="color: var(--color-accent); text-decoration: none;">Tienda</a>
+                    <a href="about.html" style="color: var(--color-accent); text-decoration: none;">Sobre Nosotros</a>
+                    <a href="terms.html" style="color: var(--color-accent); text-decoration: none;">Términos y
+                        Condiciones</a>
+                    <a href="https://discord.gg/6cc8HaNAQk" target="_blank"
+                        style="color: var(--color-accent); text-decoration: none;">Discord (Contacto Oficial)</a>
+                </div>
+            </div>
+            <p class="footer-text" style="font-size: 0.875rem; opacity: 0.7;">
+                © 2026 Crontor. Proyecto comunitario no afiliado con Hypixel Studios.<br>
+                Hytale y todos los assets relacionados son propiedad de Hypixel Studios.
+            </p>
         </div>
     </footer>
 

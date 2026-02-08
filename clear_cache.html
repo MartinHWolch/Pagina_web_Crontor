@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Limpiar Caché</title>
+    <style>
+        body {
+            background: #0a0a0f;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .box {
+            background: rgba(139, 92, 246, 0.2);
+            border: 2px solid #8b5cf6;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>🔄 Limpiar Caché del Navegador</h1>
+        <p>Para ver los cambios en la tienda, necesitas limpiar el caché:</p>
+        <ol style="text-align: left; display: inline-block;">
+            <li>Presiona <strong>Ctrl + Shift + Delete</strong></li>
+            <li>Selecciona "Archivos e imágenes en caché"</li>
+            <li>Haz clic en "Borrar datos"</li>
+            <li>Recarga la página con <strong>Ctrl + F5</strong></li>
+        </ol>
+        <p><strong>O simplemente presiona:</strong></p>
+        <h2>Ctrl + F5</h2>
+        <p>para recargar sin caché</p>
+        <br>
+        <a href="store.html" class="btn">Ir a la Tienda</a>
+    </div>
+
+    <script>
+        console.log('Script actualizado - Versión: ' + new Date().toISOString());
+    </script>
+</body>
+
+</html>

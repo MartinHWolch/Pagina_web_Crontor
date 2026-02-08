@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - Servidor Hytale LATAM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Merriweather:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-gradient"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="imagenes_hytale/logo_pequeño.png" alt="Crontor" style="height: 140px;">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="store.html" class="nav-link">Tienda</a>
+                <a href="about.html" class="nav-link">Sobre Nosotros</a>
+                <!-- User Profile (shown when logged in) -->
+                <div id="user-profile" class="user-profile" style="display: none;">
+                    <div class="user-info">
+                        <span class="user-rank">Aldeano</span>
+                        <span class="user-name" id="user-name">Usuario</span>
+                    </div>
+                    <button onclick="logout()" class="btn-logout" title="Cerrar sesión">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Login Button (shown when not logged in) -->
+            <button id="login-btn" onclick="openModal('login-modal')" class="btn btn-primary">Iniciar
+                Sesión</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="padding-top: 12rem; padding-bottom: 3rem;">
+        <div class="container">
+            <h1 class="hero-title">
+                Sobre <span class="gradient-text">Nosotros</span>
+            </h1>
+            <p class="hero-description">
+                Conoce más sobre el equipo detrás de Crontor
+            </p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="section">
+        <div class="container">
+            <!-- ¿Quiénes somos? -->
+            <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">¿Quiénes Somos?
+                </h2>
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    Crontor es un proyecto comunitario creado por jugadores de Hytale en Latinoamérica. Buscamos
+                    construir un reino estable, justo y en constante evolución, pensado para que la comunidad LATAM
+                    disfrute una experiencia cuidada desde el primer día.
+                </p>
+            </div>
+
+            <!-- Principios del servidor -->
+            <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Principios del
+                    Servidor</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    Las contribuciones son opcionales y no entregan ventajas competitivas. Priorizamos el juego justo,
+                    el respeto y una experiencia equilibrada para todos.
+                </p>
+            </div>
+
+            <!-- Estado del proyecto -->
+            <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Estado del
+                    Proyecto</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    El servidor está en desarrollo activo: algunas funciones pueden ajustarse para mejorar la
+                    experiencia general. Para soporte y anuncios oficiales, nuestro canal principal es Discord.
+                </p>
+            </div>
+
+            <!-- Contact CTA -->
+            <div class="glass-card" style="padding: var(--spacing-xl); text-align: center;">
+                <h2 class="section-title" style="margin-bottom: var(--spacing-lg);">Únete a la Comunidad</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: var(--spacing-lg);">
+                    Forma parte de nuestra comunidad en Discord
+                </p>
+                <a href="https://discord.gg/6cc8HaNAQk" class="btn btn-hero" target="_blank">
+                    Únete a Discord
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                <h3 style="font-size: 1.5rem; margin-bottom: var(--spacing-md);">Crontor</h3>
+                <p style="margin-bottom: var(--spacing-md);">Servidor Hytale LATAM</p>
+                <div style="display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap;">
+                    <a href="index.html" style="color: var(--color-accent); text-decoration: none;">Inicio</a>
+                    <a href="store.html" style="color: var(--color-accent); text-decoration: none;">Tienda</a>
+                    <a href="about.html" style="color: var(--color-accent); text-decoration: none;">Sobre Nosotros</a>
+                    <a href="terms.html" style="color: var(--color-accent); text-decoration: none;">Términos y
+                        Condiciones</a>
+                    <a href="https://discord.gg/6cc8HaNAQk" target="_blank"
+                        style="color: var(--color-accent); text-decoration: none;">Discord (Contacto Oficial)</a>
+                </div>
+            </div>
+            <p class="footer-text" style="font-size: 0.875rem; opacity: 0.7;">
+                © 2026 Crontor. Proyecto comunitario no afiliado con Hypixel Studios.<br>
+                Hytale y todos los assets relacionados son propiedad de Hypixel Studios.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

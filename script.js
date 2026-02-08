@@ -261,9 +261,17 @@ function showUserProfile(username) {
     const userProfile = document.getElementById('user-profile');
     const loginBtn = document.getElementById('login-btn');
     const userName = document.getElementById('user-name');
+    const userRank = document.querySelector('.user-rank');
 
     if (userProfile && loginBtn && userName) {
         userName.textContent = username;
+
+        // Load saved rank from localStorage
+        const savedRank = localStorage.getItem('crontor_user_rank');
+        if (userRank && savedRank) {
+            userRank.textContent = savedRank;
+        }
+
         userProfile.style.display = 'flex';
         loginBtn.style.display = 'none';
     }
@@ -300,7 +308,19 @@ function filterCategory(category) {
 
     // Update active button
     buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+
+    // If called from click event, use event.target, otherwise find button by category
+    if (typeof event !== 'undefined' && event.target) {
+        event.target.classList.add('active');
+    } else {
+        // Find the button for this category and make it active
+        const targetBtn = Array.from(buttons).find(btn =>
+            btn.getAttribute('onclick')?.includes(`'${category}'`)
+        );
+        if (targetBtn) {
+            targetBtn.classList.add('active');
+        }
+    }
 
     // Filter products
     products.forEach(product => {
@@ -333,6 +353,11 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             }, 100);
         }
+    } else if (document.querySelector('.category-filter')) {
+        // If we're on the store page and no hash, default to rangos
+        setTimeout(() => {
+            filterCategory('rangos');
+        }, 100);
     }
 });
 
@@ -349,6 +374,62 @@ function openCheckout(productName, price) {
     document.getElementById('checkout-product').textContent = productName;
     document.getElementById('checkout-price').textContent = '$' + price.toLocaleString();
     document.getElementById('checkout-user').textContent = currentUser;
+
+    // Reset checkbox
+    const checkbox = document.getElementById('purchase-confirm-checkbox');
+    if (checkbox) {
+        checkbox.checked = false;
+    }
+
+    const warningDiv = document.getElementById('rank-warning');
+    const warningText = document.getElementById('rank-warning-text');
+    let showWarning = false;
+    let warningMessage = '';
+
+    // Check if purchasing a rank
+    const ranks = ['Caballero', 'Conde', 'Duque', 'Soberano'];
+    const rankHierarchy = { 'Caballero': 1, 'Conde': 2, 'Duque': 3, 'Soberano': 4 };
+    const purchasingRank = ranks.find(rank => productName.includes(rank));
+
+    if (purchasingRank) {
+        const currentRank = localStorage.getItem('crontor_user_rank') || 'Aldeano';
+        const currentRankLevel = rankHierarchy[currentRank] || 0;
+        const purchasingRankLevel = rankHierarchy[purchasingRank] || 0;
+
+        if (currentRank === purchasingRank) {
+            // Same rank
+            showWarning = true;
+            warningMessage = '⚠️ Ya tienes este rango. Esta compra no te dará beneficios adicionales.';
+        } else if (purchasingRankLevel < currentRankLevel) {
+            // Inferior rank
+            showWarning = true;
+            warningMessage = `⚠️ Ya tienes el rango "${currentRank}" que es superior a "${purchasingRank}". Esta compra no te dará beneficios adicionales.`;
+        }
+    }
+
+    // Check if purchasing an accessory
+    const accessories = ['Conjunto Místico', 'Conjunto Legendario', 'Conjunto de Aventurero'];
+    const purchasingAccessory = accessories.find(acc => productName.includes(acc));
+
+    if (purchasingAccessory) {
+        // Get user's purchased accessories from localStorage
+        const userAccessories = JSON.parse(localStorage.getItem('crontor_user_accessories') || '[]');
+
+        if (userAccessories.includes(purchasingAccessory)) {
+            showWarning = true;
+            warningMessage = '⚠️ Ya tienes este accesorio. Esta compra no te dará beneficios adicionales.';
+        }
+    }
+
+    // Show or hide warning
+    if (warningDiv && warningText) {
+        if (showWarning) {
+            warningDiv.style.display = 'block';
+            warningText.textContent = warningMessage;
+        } else {
+            warningDiv.style.display = 'none';
+        }
+    }
 
     openModal('checkout-modal');
 }
@@ -427,6 +508,15 @@ function handleGift(event) {
 
 // Open payment method selection modal
 function openPaymentModal() {
+    // Check if checkbox is checked (only for checkout modal, not for gifts)
+    const checkoutModal = document.getElementById('checkout-modal');
+    const checkbox = document.getElementById('purchase-confirm-checkbox');
+
+    if (checkoutModal && checkoutModal.style.display !== 'none' && checkbox && !checkbox.checked) {
+        alert('Debes aceptar la compra marcando la casilla de confirmación');
+        return;
+    }
+
     openModal('payment-modal');
 }
 
@@ -450,6 +540,37 @@ function selectPaymentMethod(method) {
     } else {
         const product = document.getElementById('checkout-product').textContent;
         const price = document.getElementById('checkout-price').textContent;
+
+        // Check if the purchased product is a rank
+        const ranks = ['Caballero', 'Conde', 'Duque', 'Soberano'];
+        const purchasedRank = ranks.find(rank => product.includes(rank));
+
+        if (purchasedRank) {
+            // Update user's rank in localStorage
+            const currentUser = localStorage.getItem('crontor_current_user');
+            if (currentUser) {
+                localStorage.setItem('crontor_user_rank', purchasedRank);
+
+                // Update the rank display in the navigation
+                const userRankElement = document.querySelector('.user-rank');
+                if (userRankElement) {
+                    userRankElement.textContent = purchasedRank;
+                }
+            }
+        }
+
+        // Check if the purchased product is an accessory
+        const accessories = ['Conjunto Místico', 'Conjunto Legendario', 'Conjunto de Aventurero'];
+        const purchasedAccessory = accessories.find(acc => product.includes(acc));
+
+        if (purchasedAccessory) {
+            // Add accessory to user's collection in localStorage
+            const userAccessories = JSON.parse(localStorage.getItem('crontor_user_accessories') || '[]');
+            if (!userAccessories.includes(purchasedAccessory)) {
+                userAccessories.push(purchasedAccessory);
+                localStorage.setItem('crontor_user_accessories', JSON.stringify(userAccessories));
+            }
+        }
 
         alert(`¡Compra confirmada!\n\nProducto: ${product}\nPrecio: ${price}\nMétodo de pago: ${methodName}\n\nEsta es una demostración. En producción, aquí se procesaría el pago real.`);
     }

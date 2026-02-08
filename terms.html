@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones - Crontor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Merriweather:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-gradient"></div>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="imagenes_hytale/logo_pequeño.png" alt="Crontor" style="height: 140px;">
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="store.html" class="nav-link">Tienda</a>
+                <a href="about.html" class="nav-link">Sobre Nosotros</a>
+
+                <!-- (opcional) user-profile si lo usas en todas -->
+                <div id="user-profile" class="user-profile" style="display: none;">
+                    <div class="user-info">
+                        <span class="user-rank">Aldeano</span>
+                        <span class="user-name" id="user-name">Usuario</span>
+                    </div>
+                    <button onclick="logout()" class="btn-logout" title="Cerrar sesión">…</button>
+                </div>
+            </div>
+
+            <!-- (opcional) botón login -->
+            <button id="login-btn" onclick="openModal('login-modal')" class="btn btn-primary">
+                Iniciar Sesión
+            </button>
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero" style="padding-top: 12rem; padding-bottom: 3rem;">
+
+        <div class="container">
+            <h1 class="hero-title" style="margin-bottom: var(--spacing-lg);">
+                Términos y <span class="gradient-text">Condiciones</span>
+            </h1>
+            <p class="hero-description" style="max-width: 700px; margin: 0 auto;">
+                Información legal y condiciones de uso del servidor Crontor
+            </p>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="section">
+        <div class="container">
+            <!-- Acceptance -->
+            <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Aceptación de
+                    Términos</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    Al utilizar este sitio web, acceder al servidor de Crontor o realizar contribuciones, aceptas los
+                    términos y condiciones aquí descritos. Si no estás de acuerdo con alguno de estos términos, te
+                    recomendamos no utilizar nuestros servicios.
+                </p>
+            </div>
+
+            <!-- Intellectual Property -->
+            <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Propiedad
+                    Intelectual</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: var(--spacing-md);">
+                    <strong>Hytale</strong> y todos los assets, marcas, logotipos y contenido relacionado son propiedad
+                    exclusiva de <strong>Hypixel Studios</strong>. Crontor es un proyecto comunitario independiente y
+                    <strong>no está afiliado, patrocinado ni respaldado por Hypixel Studios</strong>.
+                </p>
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    Todo el contenido original creado por Crontor (configuraciones, sistemas internos, diseños
+                    personalizados) es propiedad del proyecto y se utiliza exclusivamente dentro del servidor.
+                </p>
+            </div>
+
+            <!-- Service Nature -->
+            <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Naturaleza del
+                    Servicio</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: var(--spacing-md);">
+                    Crontor ofrece servicios digitales dentro del servidor de Hytale, incluyendo:
+                </p>
+                <ul
+                    style="font-size: 1.125rem; line-height: 1.8; margin-left: var(--spacing-lg); margin-bottom: var(--spacing-md);">
+                    <li>Acceso a configuraciones y funcionalidades personalizadas</li>
+                    <li>Objetos cosméticos y accesorios visuales</li>
+                    <li>Mascotas y monturas decorativas</li>
+                    <li>Beneficios de calidad de vida (no competitivos)</li>
+                </ul>
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    Todos los servicios son de naturaleza digital y se entregan de forma inmediata tras la confirmación
+                    de la contribución.
+                </p>
+            </div>
+
+            <!-- No Refunds -->
+            <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Política de
+                    Reembolsos</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: var(--spacing-md);">
+                    Debido a la naturaleza digital de los servicios ofrecidos y su entrega inmediata, <strong>no se
+                        aceptan devoluciones ni reembolsos</strong> una vez confirmada la transacción.
+                </p>
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    En caso de problemas técnicos o errores en la entrega del servicio, puedes contactarnos a través de
+                    nuestro Discord oficial para recibir soporte.
+                </p>
+            </div>
+
+            <!-- Content Changes -->
+            <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Modificaciones de
+                    Contenido</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: var(--spacing-md);">
+                    Crontor se reserva el derecho de modificar, actualizar o eliminar contenido, funcionalidades y
+                    servicios del servidor con el objetivo de mejorar la experiencia de juego, mantener el equilibrio y
+                    garantizar la estabilidad del proyecto.
+                </p>
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    Los cambios se realizan siempre pensando en el beneficio de la comunidad y se comunican a través de
+                    nuestros canales oficiales.
+                </p>
+            </div>
+
+            <!-- User Conduct -->
+            <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Conducta del
+                    Usuario</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: var(--spacing-md);">
+                    Al utilizar el servidor, te comprometes a:
+                </p>
+                <ul
+                    style="font-size: 1.125rem; line-height: 1.8; margin-left: var(--spacing-lg); margin-bottom: var(--spacing-md);">
+                    <li>Respetar a otros jugadores y miembros de la comunidad</li>
+                    <li>No utilizar hacks, cheats o modificaciones no autorizadas</li>
+                    <li>No explotar bugs o errores del servidor para obtener ventajas</li>
+                    <li>Seguir las reglas y normativas del servidor</li>
+                </ul>
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    El incumplimiento de estas normas puede resultar en sanciones, incluyendo la suspensión o expulsión
+                    permanente del servidor.
+                </p>
+            </div>
+
+            <!-- Liability -->
+            <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Limitación de
+                    Responsabilidad</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: var(--spacing-md);">
+                    Crontor es un proyecto comunitario mantenido por voluntarios. Aunque nos esforzamos por ofrecer un
+                    servicio estable y de calidad, no podemos garantizar disponibilidad ininterrumpida ni ausencia de
+                    errores técnicos.
+                </p>
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    No nos hacemos responsables por pérdidas de progreso, datos o contenido debido a problemas técnicos,
+                    mantenimientos o circunstancias fuera de nuestro control.
+                </p>
+            </div>
+
+            <!-- Official Contact -->
+            <div class="glass-card" style="padding: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Canal de Contacto
+                    Oficial</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: var(--spacing-md);">
+                    El único canal oficial de contacto, soporte y comunicación de Crontor es nuestro servidor de
+                    <strong>Discord</strong>.
+                </p>
+                <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: var(--spacing-lg);">
+                    Toda información oficial del servidor se comunica únicamente a través de nuestros canales
+                    verificados. Desconfía de cualquier comunicación que provenga de fuentes no oficiales.
+                </p>
+                <div style="text-align: center;">
+                    <a href="https://discord.gg/6cc8HaNAQk" class="btn btn-hero" target="_blank">
+                        Únete a Discord
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Updates -->
+            <div class="glass-card" style="padding: var(--spacing-xl);">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Actualizaciones de
+                    Términos</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    Estos términos y condiciones pueden ser actualizados periódicamente. Los cambios significativos
+                    serán comunicados a través de nuestros canales oficiales. El uso continuado del servidor tras la
+                    publicación de cambios constituye la aceptación de los nuevos términos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                <h3 style="font-size: 1.5rem; margin-bottom: var(--spacing-md);">Crontor</h3>
+                <p style="margin-bottom: var(--spacing-md);">Servidor Hytale LATAM</p>
+                <div style="display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap;">
+                    <a href="index.html" style="color: var(--color-accent); text-decoration: none;">Inicio</a>
+                    <a href="store.html" style="color: var(--color-accent); text-decoration: none;">Tienda</a>
+                    <a href="about.html" style="color: var(--color-accent); text-decoration: none;">Sobre Nosotros</a>
+                    <a href="terms.html" style="color: var(--color-accent); text-decoration: none;">Términos y
+                        Condiciones</a>
+                    <a href="https://discord.gg/6cc8HaNAQk" target="_blank"
+                        style="color: var(--color-accent); text-decoration: none;">Discord (Contacto Oficial)</a>
+                </div>
+            </div>
+            <p class="footer-text" style="font-size: 0.875rem; opacity: 0.7;">
+                © 2026 Crontor. Proyecto comunitario no afiliado con Hypixel Studios.<br>
+                Hytale y todos los assets relacionados son propiedad de Hypixel Studios.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Merriweather:wght@300;400;700;900&display=swap"
         rel="stylesheet">
 </head>
 
@@ -28,8 +28,9 @@
                 </a>
             </div>
             <div class="nav-links">
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="store.html" class="nav-link" style="color: var(--color-purple-light);">Tienda</a>
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="store.html" class="nav-link">Tienda</a>
+                <a href="about.html" class="nav-link">Sobre Nosotros</a>
                 <!-- User Profile (shown when logged in) -->
                 <div id="user-profile" class="user-profile" style="display: none;">
                     <div class="user-info">
@@ -43,15 +44,16 @@
                         </svg>
                     </button>
                 </div>
-                <!-- Login Button (shown when not logged in) -->
-                <button id="login-btn" onclick="openModal('login-modal')" class="btn btn-primary">Iniciar
-                    Sesión</button>
+            </div>
+            <!-- Login Button (shown when not logged in) -->
+            <button id="login-btn" onclick="openModal('login-modal')" class="btn btn-primary">Iniciar
+                Sesión</button>
             </div>
         </nav>
     </header>
 
     <!-- Store Hero -->
-    <section class="hero" style="padding-top: 8rem; padding-bottom: 3rem;">
+    <section class="hero" style="padding-top: 12rem; padding-bottom: 3rem;">
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title animate-fade-in" style="font-size: clamp(2rem, 5vw, 3.5rem);">
@@ -69,19 +71,19 @@
         <div class="container">
             <div class="category-filter">
                 <button class="category-btn active" onclick="filterCategory('rangos')">
-                    👑 Rangos
+                    Rangos
                 </button>
                 <button class="category-btn" onclick="filterCategory('tierras')">
-                    🏞️ Tierras
+                    Tierras
                 </button>
                 <button class="category-btn" onclick="filterCategory('monedas')">
-                    💰 Monedas
+                    Monedas
                 </button>
                 <button class="category-btn" onclick="filterCategory('accesorios')">
-                    ✨ Accesorios
+                    Accesorios
                 </button>
                 <button class="category-btn" onclick="filterCategory('donaciones')">
-                    💝 Donaciones
+                    Donaciones
                 </button>
             </div>
         </div>
@@ -199,8 +201,8 @@
 
                 <!-- TIERRAS -->
                 <div class="product-card glass-card animate-slide-up" data-category="tierras">
-                    <div class="product-header land-header">
-                        <div class="land-visual">6x6</div>
+                    <div class="product-header">
+                        <img src="imagenes_hytale/terreno_pequeño.png" alt="Terreno Pequeño" class="product-image">
                     </div>
                     <div class="product-body">
                         <h3 class="product-title" style="text-align: center; margin-bottom: var(--spacing-md);">Terreno
@@ -219,8 +221,8 @@
                 </div>
 
                 <div class="product-card glass-card animate-slide-up" data-category="tierras">
-                    <div class="product-header land-header">
-                        <div class="land-visual">20x20</div>
+                    <div class="product-header">
+                        <img src="imagenes_hytale/terreno_mediano.png" alt="Terreno Mediano" class="product-image">
                     </div>
                     <div class="product-body">
                         <h3 class="product-title" style="text-align: center; margin-bottom: var(--spacing-md);">Terreno
@@ -239,8 +241,8 @@
                 </div>
 
                 <div class="product-card glass-card animate-slide-up" data-category="tierras">
-                    <div class="product-header land-header">
-                        <div class="land-visual">40x40</div>
+                    <div class="product-header">
+                        <img src="imagenes_hytale/terreno_grande.png" alt="Terreno Grande" class="product-image">
                     </div>
                     <div class="product-body">
                         <h3 class="product-title" style="text-align: center; margin-bottom: var(--spacing-md);">Terreno
@@ -260,8 +262,8 @@
 
                 <div class="product-card glass-card animate-slide-up premium-card" data-category="tierras">
                     <div class="product-badge premium">Mega</div>
-                    <div class="product-header land-header">
-                        <div class="land-visual premium">60x60</div>
+                    <div class="product-header">
+                        <img src="imagenes_hytale/terreno_mega.png" alt="Terreno Mega" class="product-image">
                     </div>
                     <div class="product-body">
                         <h3 class="product-title" style="text-align: center; margin-bottom: var(--spacing-md);">Terreno
@@ -304,7 +306,7 @@
                 <div class="product-card glass-card animate-slide-up" data-category="monedas">
                     <div class="product-badge">+10% Bonus</div>
                     <div class="product-header">
-                        <img src="imagenes_hytale/Varias_monedas.png" alt="500 Monedas"
+                        <img src="imagenes_hytale/Varias_monedas2.png" alt="500 Monedas"
                             class="product-image coin-image">
                     </div>
                     <div class="product-body">
@@ -482,7 +484,27 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="footer-text">La mejor experiencia de Hytale en español</p>
+            <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                <h3 style="font-size: 1.5rem; margin-bottom: var(--spacing-md);">Crontor</h3>
+                <p style="margin-bottom: var(--spacing-md);">Servidor Hytale LATAM</p>
+                <div style="display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap;">
+                    <a href="index.html" style="color: var(--color-accent); text-decoration: none;">Inicio</a>
+                    <a href="store.html" style="color: var(--color-accent); text-decoration: none;">Tienda</a>
+                    <a href="about.html" style="color: var(--color-accent); text-decoration: none;">Sobre Nosotros</a>
+                    <a href="terms.html" style="color: var(--color-accent); text-decoration: none;">Términos y
+                        Condiciones</a>
+                    <a href="https://discord.gg/6cc8HaNAQk" target="_blank"
+                        style="color: var(--color-accent); text-decoration: none;">Discord (Contacto Oficial)</a>
+                </div>
+            </div>
+            <p class="footer-text" style="font-size: 0.875rem; opacity: 0.7;">
+                © 2026 Crontor. Proyecto comunitario no afiliado con Hypixel Studios.<br>
+                Hytale y todos los assets relacionados son propiedad de Hypixel Studios.<br>
+                <span style="margin-top: var(--spacing-sm); display: inline-block;">Al realizar una contribución,
+                    aceptas los <a href="terms.html"
+                        style="color: var(--color-accent); text-decoration: underline;">términos y condiciones</a> del
+                    servicio.</span>
+            </p>
         </div>
     </footer>
 
@@ -508,7 +530,26 @@
                     <span class="checkout-value" id="checkout-user">-</span>
                 </div>
             </div>
+
+            <!-- Warning message (hidden by default) -->
+            <div id="rank-warning"
+                style="display: none; background: rgba(255, 193, 7, 0.1); border: 2px solid #ffc107; border-radius: 1rem; padding: var(--spacing-md); margin: var(--spacing-md) 0;">
+                <p id="rank-warning-text" style="color: #ffc107; font-weight: bold; margin: 0; text-align: center;">
+                </p>
+            </div>
+
             <p class="checkout-note">Selecciona tu método de pago preferido</p>
+
+            <!-- Confirmation checkbox -->
+            <div style="margin: var(--spacing-md) 0; text-align: center;">
+                <label
+                    style="display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm); cursor: pointer;">
+                    <input type="checkbox" id="purchase-confirm-checkbox"
+                        style="width: 18px; height: 18px; cursor: pointer;">
+                    <span style="color: var(--color-text-primary);">Acepto esta compra</span>
+                </label>
+            </div>
+
             <button class="btn btn-hero" style="width: 100%; justify-content: center;" onclick="openPaymentModal()">
                 Continuar al Pago
             </button>
