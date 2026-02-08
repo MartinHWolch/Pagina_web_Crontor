@@ -31,6 +31,20 @@
                 <a href="index.html" class="nav-link">Inicio</a>
                 <a href="store.html" class="nav-link">Tienda</a>
                 <a href="about.html" class="nav-link">Sobre Nosotros</a>
+
+                <!-- Cart Icon -->
+                <div class="cart-icon-container" onclick="openCartModal()">
+                    <button class="cart-btn" title="Ver carrito">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </button>
+                </div>
+
                 <!-- User Profile (shown when logged in) -->
                 <div id="user-profile" class="user-profile" style="display: none;">
                     <div class="user-info">
@@ -115,7 +129,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('Caballero', 5000)">🎁 Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('Caballero', 5000)">Comprar</button>
+                                    onclick="addToCart('rank-caballero', 'Rango Caballero', 5000, 'rangos')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -141,7 +155,7 @@
                                 <button class="btn btn-secondary btn-small" onclick="openGiftModal('Conde', 10000)">🎁
                                     Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('Conde', 10000)">Comprar</button>
+                                    onclick="addToCart('rank-conde', 'Rango Conde', 10000, 'rangos')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -167,7 +181,7 @@
                                 <button class="btn btn-secondary btn-small" onclick="openGiftModal('Duque', 20000)">🎁
                                     Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('Duque', 20000)">Comprar</button>
+                                    onclick="addToCart('rank-duque', 'Rango Duque', 20000, 'rangos')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -193,7 +207,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('Soberano', 35000)">🎁 Regalo</button>
                                 <button class="btn btn-hero btn-small"
-                                    onclick="openCheckout('Soberano', 35000)">Comprar</button>
+                                    onclick="addToCart('rank-soberano', 'Rango Soberano', 35000, 'rangos')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -214,7 +228,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('Terreno 6x6', 2000)">🎁 Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('Terreno 6x6', 2000)">Comprar</button>
+                                    onclick="addToCart('tierras-6x6', 'Terreno 6x6', 2000, 'tierras')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -234,7 +248,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('Terreno 20x20', 5000)">🎁 Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('Terreno 20x20', 5000)">Comprar</button>
+                                    onclick="addToCart('tierras-20x20', 'Terreno 20x20', 5000, 'tierras')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -254,7 +268,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('Terreno 40x40', 12000)">🎁 Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('Terreno 40x40', 12000)">Comprar</button>
+                                    onclick="addToCart('tierras-40x40', 'Terreno 40x40', 12000, 'tierras')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -276,7 +290,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('Terreno 60x60', 25000)">🎁 Regalo</button>
                                 <button class="btn btn-hero btn-small"
-                                    onclick="openCheckout('Terreno 60x60', 25000)">Comprar</button>
+                                    onclick="addToCart('tierras-60x60', 'Terreno 60x60', 25000, 'tierras')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -297,7 +311,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('100 Monedas', 1000)">🎁 Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('100 Monedas', 1000)">Comprar</button>
+                                    onclick="addToCart('monedas-100', '100 Monedas', 1000, 'monedas')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -319,7 +333,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('500 Monedas', 4500)">🎁 Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('500 Monedas', 4500)">Comprar</button>
+                                    onclick="addToCart('monedas-500', '500 Monedas', 4500, 'monedas')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -341,7 +355,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('1000 Monedas', 8500)">🎁 Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('1000 Monedas', 8500)">Comprar</button>
+                                    onclick="addToCart('monedas-1000', '1000 Monedas', 8500, 'monedas')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -363,7 +377,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('5000 Monedas', 35000)">🎁 Regalo</button>
                                 <button class="btn btn-hero btn-small"
-                                    onclick="openCheckout('5000 Monedas', 35000)">Comprar</button>
+                                    onclick="addToCart('monedas-5000', '5000 Monedas', 35000, 'monedas')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -385,7 +399,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('Conjunto Místico', 5000)">🎁 Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('Conjunto Místico', 5000)">Comprar</button>
+                                    onclick="addToCart('acc-mistico', 'Conjunto Místico', 5000, 'accesorios')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -406,7 +420,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('Conjunto Legendario', 4000)">🎁 Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('Conjunto Legendario', 4000)">Comprar</button>
+                                    onclick="addToCart('acc-legendario', 'Conjunto Legendario', 4000, 'accesorios')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -427,7 +441,7 @@
                                 <button class="btn btn-secondary btn-small"
                                     onclick="openGiftModal('Conjunto de Aventurero', 3500)">🎁 Regalo</button>
                                 <button class="btn btn-primary btn-small"
-                                    onclick="openCheckout('Conjunto de Aventurero', 3500)">Comprar</button>
+                                    onclick="addToCart('acc-aventurero', 'Conjunto de Aventurero', 3500, 'accesorios')">Añadir</button>
                             </div>
                         </div>
                     </div>
@@ -680,6 +694,46 @@
             </div>
             <button onclick="switchToLogin()" class="btn-text">¿Ya tienes cuenta? Inicia sesión</button>
         </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal" style="display: none;">
+        <div class="modal-overlay" onclick="closeModal('cart-modal')"></div>
+        <div class="modal-content glass-card cart-modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Tu Carrito</h2>
+                <button onclick="closeModal('cart-modal')" class="modal-close">&times;</button>
+            </div>
+
+            <div id="cart-items-container" class="cart-items-list">
+                <!-- Items will be injected here -->
+                <p class="empty-cart-msg">Tu carrito está vacío</p>
+            </div>
+
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">$0</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total estimado:</span>
+                    <span id="cart-total">$0</span>
+                </div>
+                <p class="cart-note">* Los precios se convertirán a USD durante el pago.</p>
+            </div>
+
+            <div class="cart-footer">
+                <button class="btn btn-secondary" onclick="closeModal('cart-modal')">Continuar Comprando</button>
+                <button id="checkout-btn" class="btn btn-hero" onclick="proceedToCheckout()" disabled>
+                    Pagar con Tebex
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification-toast" class="notification-toast">
+        <span id="notification-message">Producto añadido</span>
     </div>
 
     <script src="script.js"></script>

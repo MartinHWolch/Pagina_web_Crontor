@@ -1,12 +1,12 @@
-# Crontor Backend - Mercado Pago Integration
+# Crontor Backend - Tebex Integration
 
-Backend API para procesar pagos de la tienda Crontor usando Mercado Pago.
+Backend API para procesar pagos de la tienda Crontor usando Tebex.
 
 ## 🚀 Características
 
 - ✅ Express.js server
-- ✅ Integración completa con Mercado Pago SDK
-- ✅ Creación de preferencias de pago
+- ✅ Integración completa con Tebex Headless API
+- ✅ Creación de baskets de pago
 - ✅ Manejo de webhooks
 - ✅ CORS configurado
 - ✅ Variables de entorno seguras
@@ -16,8 +16,8 @@ Backend API para procesar pagos de la tienda Crontor usando Mercado Pago.
 ### Prerrequisitos
 
 - Node.js 16+ con npm
-- Cuenta de desarrollador en Mercado Pago Chile
-- Credenciales de test de Mercado Pago
+- Cuenta de Tebex (https://www.tebex.io/)
+- Credenciales de Tebex (Secret Key y Webstore ID)
 
 ### Pasos
 
@@ -38,12 +38,14 @@ Copia el archivo `.env.example` a `.env`:
 copy .env.example .env
 ```
 
-Edita el archivo `.env` y agrega tus credenciales de Mercado Pago:
+Edita el archivo `.env` y agrega tus credenciales de Tebex:
 ```
 PORT=3001
-MERCADOPAGO_ACCESS_TOKEN=tu_access_token_de_mercado_pago
+TEBEX_SECRET_KEY=tu_secret_key_de_tebex
+TEBEX_WEBSTORE_ID=tu_webstore_id
 FRONTEND_URL=http://localhost:5173
 NODE_ENV=development
+BACKEND_URL=http://localhost:3001
 ```
 
 4. **Iniciar el servidor:**
@@ -58,21 +60,20 @@ npm start
 
 El servidor estará disponible en `http://localhost:3001`
 
-## 🔑 Obtener Credenciales de Mercado Pago
+## 🔑 Obtener Credenciales de Tebex
 
-1. Ve a [Mercado Pago Developers](https://www.mercadopago.cl/developers)
-2. Crea una cuenta de desarrollador
-3. Ve a "Tus credenciales"
-4. Copia tu **Access Token de prueba** (Test)
-5. Pégalo en el archivo `.env` como `MERCADOPAGO_ACCESS_TOKEN`
+1. Ve a [Tebex](https://www.tebex.io/) y crea una cuenta
+2. Crea un nuevo webstore
+3. Ve a "Settings" → "API Keys"
+4. Copia tu **Secret Key**
+5. Copia tu **Webstore ID**
+6. Pégalos en el archivo `.env`
 
 ## 🏗️ Estructura del Proyecto
 
 ```
-├── config/
-│   └── mercadopago.js      # Configuración del SDK
 ├── routes/
-│   └── payments.js         # Rutas de pagos
+│   └── payments.js         # Rutas de pagos con Tebex API
 ├── server.js               # Servidor Express principal
 ├── .env.example            # Plantilla de variables de entorno
 ├── .gitignore
@@ -86,8 +87,8 @@ El servidor estará disponible en `http://localhost:3001`
 - Descripción: Health check del API
 - Respuesta: `{ "message": "Crontor Backend API - Running" }`
 
-### POST /api/payments/create-preference
-- Descripción: Crea una preferencia de pago en Mercado Pago
+### POST /api/payments/create-basket
+- Descripción: Crea un basket de pago en Tebex
 - Body:
 ```json
 {
@@ -100,85 +101,77 @@ El servidor estará disponible en `http://localhost:3001`
 - Respuesta:
 ```json
 {
-  "id": "123456789",
-  "init_point": "https://www.mercadopago.cl/checkout/v1/redirect?pref_id=123456789",
-  "sandbox_init_point": "https://sandbox.mercadopago.cl/checkout/v1/redirect?pref_id=123456789"
+  "basket_id": "abc123def456",
+  "checkout_url": "https://checkout.tebex.io/checkout/abc123def456",
+  "success": true
 }
 ```
 
 ### POST /api/payments/webhook
-- Descripción: Recibe notificaciones de Mercado Pago sobre cambios en pagos
-- Body: Enviado automáticamente por Mercado Pago
+- Descripción: Recibe notificaciones de Tebex sobre cambios en pagos
+- Body: Enviado automáticamente por Tebex
 - Respuesta: Status 200
 
-Nota: Para que los webhooks funcionen en desarrollo local, necesitas usar ngrok o similar para exponer tu servidor local
+Nota: Configura la URL de webhook en tu panel de Tebex: `https://tu-dominio.com/api/payments/webhook`
 
-### GET /api/payments/status/:id
-- Descripción: Verifica el estado de un pago
-- Parámetros: `id` - ID del pago
+### GET /api/payments/status/:basketId
+- Descripción: Verifica el estado de un basket/pago
+- Parámetros: `basketId` - ID del basket
 - Respuesta:
 ```json
 {
-  "id": "payment_id",
-  "status": "approved",
-  "message": "Payment status"
+  "basket_id": "abc123",
+  "status": "completed",
+  "data": { ... }
 }
 ```
 
-## 🧪 Probar con Mercado Pago Sandbox
+## 🧪 Probar con Tebex Test Mode
 
-Mercado Pago provee tarjetas de prueba para el ambiente de sandbox (Chile):
+Tebex provee un modo de prueba para testing:
 
-**Tarjeta de Crédito - Aprobada:**
-- Número: `5031 7557 3453 0604`
-- CVV: 123
-- Fecha: Cualquier fecha futura
+1. Activa el "Test Mode" en tu panel de Tebex
+2. Usa tarjetas de prueba de Stripe (Tebex usa Stripe como procesador)
+3. Tarjeta de prueba exitosa: `4242 4242 4242 4242`
+4. CVV: Cualquier 3 dígitos
+5. Fecha: Cualquier fecha futura
 
-**Tarjeta de Débito - Aprobada:**
-- Número: `4168 8188 4288 1319`
-- CVV: 123
-- Fecha: Cualquier fecha futura
-
-**Tarjeta Rechazada:**
-- Número: `5031 4332 1540 6351`
-- CVV: 123
-- Fecha: Cualquier fecha futura
-
-[Ver más tarjetas de prueba](https://www.mercadopago.cl/developers/es/docs/checkout-api/testing)
+[Ver más sobre testing en Tebex](https://docs.tebex.io/developers/testing)
 
 ## 🔒 Seguridad
 
 - ⚠️ NUNCA hagas commit del archivo `.env`
-- ⚠️ NUNCA compartas tu Access Token público
+- ⚠️ NUNCA compartas tu Secret Key públicamente
 - ⚠️ En producción, usa HTTPS
-- ⚠️ Valida siempre los webhooks con la firma de Mercado Pago
+- ⚠️ Valida siempre los webhooks con la firma de Tebex
 
 ## 🚀 Despliegue a Producción
 
 1. Cambia `NODE_ENV=production` en `.env`
-2. Usa el Access Token de producción (no el de test)
-3. Configura la URL de webhook en tu panel de Mercado Pago
+2. Desactiva el "Test Mode" en tu panel de Tebex
+3. Configura la URL de webhook en tu panel de Tebex
 4. Asegúrate de usar HTTPS
 5. Configura las variables de entorno en tu servidor
 
 ## 🐛 Troubleshooting
 
-**Error: "Invalid credentials"**
-- Verifica que tu Access Token sea correcto
-- Asegúrate de usar el Access Token de Chile
+**Error: "Tebex not configured"**
+- Verifica que tu Secret Key sea correcto en `.env`
+- Asegúrate de que no sea el valor placeholder
 
 **Error: "CORS"**
 - Verifica que `FRONTEND_URL` en `.env` coincida con la URL de tu frontend
 
 **Webhook no recibe notificaciones:**
-- En desarrollo local, usa ngrok para exponer tu servidor
-- Asegúrate de configurar la URL de webhook en Mercado Pago
+- Asegúrate de configurar la URL de webhook en el panel de Tebex
+- Verifica que tu servidor sea accesible públicamente (usa ngrok para desarrollo local)
 
 ## 📚 Recursos
 
-- [Documentación Mercado Pago](https://www.mercadopago.cl/developers/es/docs)
-- [SDK de Mercado Pago para Node.js](https://github.com/mercadopago/sdk-nodejs)
-- [Guía de integración Checkout Pro](https://www.mercadopago.cl/developers/es/docs/checkout-pro/landing)
+- [Documentación Tebex](https://docs.tebex.io/)
+- [Tebex Headless API](https://docs.tebex.io/developers/headless-api)
+- [Tebex Webhooks](https://docs.tebex.io/developers/webhooks)
+- [Tebex Node.js SDK](https://github.com/tebexio/tebex-sdk-nodejs)
 
 ## 🔗 Enlaces Relacionados
 

@@ -1,6 +1,6 @@
 # Crontor React Frontend
 
-Sitio web de Crontor migrado a React con integración de Mercado Pago.
+Sitio web de Crontor migrado a React con integración de Tebex.
 
 ## 🚀 Características
 
@@ -8,7 +8,7 @@ Sitio web de Crontor migrado a React con integración de Mercado Pago.
 - ✅ React Router para navegación
 - ✅ Context API para gestión de estado
 - ✅ Autenticación con localStorage
-- ✅ Integración con Mercado Pago
+- ✅ Integración con Tebex
 - ✅ Diseño responsive
 - ✅ Animaciones suaves
 
@@ -77,8 +77,8 @@ src/
 3. Selecciona un producto
 4. Click en "Comprar"
 5. Confirma la compra
-6. Es redirigido a Mercado Pago
-7. Completa el pago
+6. Es redirigido a Tebex checkout
+7. Completa el pago de forma segura
 8. Es redirigido de vuelta con el resultado
 
 ## 🔨 Scripts Disponibles
@@ -106,4 +106,4 @@ src/
 ## 🔗 Enlaces Relacionados
 
 - [Backend README](../Pagina_web_Crontor_Backend/README.md)
-- [Documentación de Mercado Pago](https://www.mercadopago.cl/developers)
+- [Documentación de Tebex](https://docs.tebex.io/)

@@ -624,3 +624,193 @@ function processDonation() {
     // Open payment modal directly
     openPaymentModal();
 }
+
+// ===================================
+// SHOPPING CART LOGIC
+// ===================================
+
+let cart = [];
+
+// Load cart from localStorage on startup
+document.addEventListener('DOMContentLoaded', () => {
+    const savedCart = localStorage.getItem('crontor_cart');
+    if (savedCart) {
+        try {
+            cart = JSON.parse(savedCart);
+            updateCartUI();
+        } catch (e) {
+            console.error('Error parsing cart:', e);
+            cart = [];
+        }
+    }
+});
+
+function addToCart(productId, productName, price, category) {
+    // Check if product already in cart
+    const existingItem = cart.find(item => item.productId === productId);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            productId,
+            productName,
+            price,
+            category,
+            quantity: 1
+        });
+    }
+
+    saveCart();
+    updateCartUI();
+    showNotification(`${productName} añadido al carrito`);
+}
+
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.productId !== productId);
+    saveCart();
+    updateCartUI();
+}
+
+function updateQuantity(productId, delta) {
+    const item = cart.find(item => item.productId === productId);
+    if (item) {
+        item.quantity += delta;
+        if (item.quantity <= 0) {
+            removeFromCart(productId);
+        } else if (item.quantity > 50) {
+            item.quantity = 50; // Limit per item
+            alert('Límite máximo de 50 unidades por producto');
+        } else {
+            saveCart();
+            updateCartUI();
+        }
+    }
+}
+
+function saveCart() {
+    localStorage.setItem('crontor_cart', JSON.stringify(cart));
+}
+
+function updateCartUI() {
+    const cartCount = document.getElementById('cart-count');
+    const itemsContainer = document.getElementById('cart-items-container');
+    const subtotalEl = document.getElementById('cart-subtotal');
+    const totalEl = document.getElementById('cart-total');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    // Update count badge
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (cartCount) {
+        cartCount.textContent = totalItems;
+        cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+
+    // Update items list
+    if (itemsContainer) {
+        if (cart.length === 0) {
+            itemsContainer.innerHTML = '<p class="empty-cart-msg">Tu carrito está vacío</p>';
+            if (checkoutBtn) checkoutBtn.disabled = true;
+        } else {
+            itemsContainer.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.productName}</div>
+                        <div class="cart-item-price">$${(item.price * item.quantity).toLocaleString()}</div>
+                    </div>
+                    <div class="cart-item-controls">
+                        <button class="qty-btn" onclick="updateQuantity('${item.productId}', -1)">-</button>
+                        <span class="cart-item-qty">${item.quantity}</span>
+                        <button class="qty-btn" onclick="updateQuantity('${item.productId}', 1)">+</button>
+                    </div>
+                    <button class="remove-item-btn" onclick="removeFromCart('${item.productId}')" title="Eliminar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                    </button>
+                </div>
+            `).join('');
+            if (checkoutBtn) checkoutBtn.disabled = false;
+        }
+    }
+
+    // Update totals
+    const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    if (subtotalEl) subtotalEl.textContent = '$' + totalAmount.toLocaleString();
+    if (totalEl) totalEl.textContent = '$' + totalAmount.toLocaleString();
+}
+
+function openCartModal() {
+    updateCartUI();
+    openModal('cart-modal');
+}
+
+function showNotification(message) {
+    const toast = document.getElementById('notification-toast');
+    const msgEl = document.getElementById('notification-message');
+
+    if (toast && msgEl) {
+        msgEl.textContent = message;
+        toast.classList.add('show');
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+}
+
+async function proceedToCheckout() {
+    const currentUser = localStorage.getItem('crontor_current_user');
+
+    if (!currentUser) {
+        alert('Debes iniciar sesión para realizar la compra');
+        closeModal('cart-modal');
+        openModal('login-modal');
+        return;
+    }
+
+    if (cart.length === 0) {
+        alert('Tu carrito está vacío');
+        return;
+    }
+
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const originalText = checkoutBtn.textContent;
+
+    try {
+        checkoutBtn.disabled = true;
+        checkoutBtn.textContent = 'Procesando...';
+
+        // Backend URL (using 3001 as configured in server.js)
+        const BACKEND_URL = 'http://localhost:3001/api/payments';
+
+        const response = await fetch(`${BACKEND_URL}/create-basket`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: currentUser,
+                items: cart
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success && data.checkout_url) {
+            // Success! Clear cart and redirect to Tebex
+            console.log('Redirecting to Tebex:', data.checkout_url);
+            cart = [];
+            saveCart();
+            window.location.href = data.checkout_url;
+        } else {
+            throw new Error(data.message || data.error || 'Error al conectar con la pasarela de pago');
+        }
+
+    } catch (error) {
+        console.error('Checkout error:', error);
+        alert('Error al iniciar el pago: ' + error.message);
+        checkoutBtn.disabled = false;
+        checkoutBtn.textContent = originalText;
+    }
+}

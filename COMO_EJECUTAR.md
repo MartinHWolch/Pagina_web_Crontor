@@ -44,11 +44,11 @@ Una vez que tengas Node.js y npm instalados, sigue estos pasos:
 ### 1️⃣ Instalar Dependencias del Backend
 
 ```powershell
-cd c:\Users\marti\Desktop\Plugins\Pagina_web_Crontor\Pagina_web_Crontor_Backend
+cd c:\Users\ferna\OneDrive\Documentos\Crontor_web\Pagina_web_Crontor_Backend
 npm install
 ```
 
-### 2️⃣ Configurar Mercado Pago
+### 2️⃣ Configurar Tebex
 
 Crea el archivo `.env` en el backend:
 
@@ -56,19 +56,19 @@ Crea el archivo `.env` en el backend:
 copy .env.example .env
 ```
 
-Luego edita el archivo `.env` con tu Access Token de Mercado Pago.
+Luego edita el archivo `.env` con tus credenciales de Tebex (Secret Key y Webstore ID).
 
 ### 3️⃣ Instalar Dependencias del Frontend
 
 ```powershell
-cd c:\Users\marti\Desktop\Plugins\Pagina_web_Crontor\Pagina_web_Crontor_React
+cd c:\Users\ferna\OneDrive\Documentos\Crontor_web\Pagina_web_Crontor_React
 npm install
 ```
 
 ### 4️⃣ Ejecutar el Backend (Terminal 1)
 
 ```powershell
-cd c:\Users\marti\Desktop\Plugins\Pagina_web_Crontor\Pagina_web_Crontor_Backend
+cd c:\Users\ferna\OneDrive\Documentos\Crontor_web\Pagina_web_Crontor_Backend
 npm run dev
 ```
 
@@ -82,7 +82,7 @@ Server running on port 3001
 Abre una **NUEVA** terminal y ejecuta:
 
 ```powershell
-cd c:\Users\marti\Desktop\Plugins\Pagina_web_Crontor\Pagina_web_Crontor_React
+cd c:\Users\ferna\OneDrive\Documentos\Crontor_web\Pagina_web_Crontor_React
 npm run dev
 ```
 

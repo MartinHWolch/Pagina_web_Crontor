@@ -1,7 +1,7 @@
 {
     "name": "crontor-backend",
     "version": "1.0.0",
-    "description": "Backend para integración con Mercado Pago",
+    "description": "Backend para integración con Tebex",
     "main": "server.js",
     "type": "module",
     "scripts": {
@@ -9,17 +9,19 @@
         "dev": "nodemon server.js"
     },
     "keywords": [
-        "mercadopago",
+        "tebex",
         "express",
-        "backend"
+        "backend",
+        "gaming",
+        "payments"
     ],
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "express": "^4.18.2",
-        "mercadopago": "^2.0.4",
+        "axios": "^1.13.4",
         "cors": "^2.8.5",
-        "dotenv": "^16.4.1"
+        "dotenv": "^16.4.1",
+        "express": "^4.18.2"
     },
     "devDependencies": {
         "nodemon": "^3.0.3"
