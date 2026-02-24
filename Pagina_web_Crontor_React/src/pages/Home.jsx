@@ -30,8 +30,8 @@ export default function Home() {
                 <div className="container">
                     <div className="hero-content">
                         {/* Large Logo */}
-                        <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-sm)' }}>
-                            <img src="/assets/Logo.png" alt="Crontor" style={{ maxWidth: '800px', width: '100%', height: 'auto' }} />
+                        <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-xs)' }}>
+                            <img src="/assets/Logo.png" alt="Crontor" style={{ maxWidth: '600px', width: '100%', height: 'auto' }} />
                         </div>
 
                         <h1 className="hero-title animate-fade-in">
@@ -43,7 +43,7 @@ export default function Home() {
                         </p>
 
                         {/* Server Address */}
-                        <div className="server-address-container" style={{ marginTop: 'var(--spacing-xl)', textAlign: 'center' }}>
+                        <div className="server-address-container" style={{ marginTop: 'var(--spacing-lg)', textAlign: 'center' }}>
                             <p style={{ color: 'var(--color-text-primary)', fontSize: '1.25rem', marginBottom: 'var(--spacing-md)', fontWeight: 600 }}>
                                 Dirección del Servidor
                             </p>

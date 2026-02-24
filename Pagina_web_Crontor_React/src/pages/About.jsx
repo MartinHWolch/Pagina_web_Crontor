@@ -3,12 +3,14 @@ export default function About() {
         <>
             <section className="hero" style={{ paddingTop: '12rem', paddingBottom: '3rem' }}>
                 <div className="container">
-                    <h1 className="hero-title">
-                        Sobre <span className="gradient-text">Nosotros</span>
-                    </h1>
-                    <p className="hero-description">
-                        Conoce más sobre el equipo detrás de Crontor
-                    </p>
+                    <div className="hero-content">
+                        <h1 className="hero-title">
+                            Sobre <span className="gradient-text">Nosotros</span>
+                        </h1>
+                        <p className="hero-description" style={{ textAlign: 'center' }}>
+                            Conoce más sobre el equipo detrás de Crontor
+                        </p>
+                    </div>
                 </div>
             </section>
 

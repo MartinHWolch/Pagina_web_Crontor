@@ -329,8 +329,8 @@ body::before {
    HERO SECTION
    =================================== */
 .hero {
-    padding-top: 10rem;
-    padding-bottom: 6rem;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
     text-align: center;
     position: relative;
 }

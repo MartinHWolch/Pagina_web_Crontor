@@ -1,14 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useCart } from '../context/CartContext';
 import LoginModal from './modals/LoginModal';
 import RegisterModal from './modals/RegisterModal';
-import CartModal from './modals/CartModal';
 
 export default function Header() {
     const { currentUser, userRank, logout } = useAuth();
-    const { setIsCartOpen, getCartItemCount } = useCart();
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showRegisterModal, setShowRegisterModal] = useState(false);
 
@@ -44,13 +41,6 @@ export default function Header() {
                         <Link to="/about" className="nav-link">Sobre Nosotros</Link>
 
                         <div className="nav-actions">
-                            <button className="cart-btn" onClick={() => setIsCartOpen(true)} title="Ver carrito">
-                                <i className="fas fa-shopping-basket"></i>
-                                {getCartItemCount() > 0 && (
-                                    <span className="cart-badge badge-animate">{getCartItemCount()}</span>
-                                )}
-                            </button>
-
                             {currentUser ? (
                                 <div className="user-profile">
                                     <div className="user-info">
@@ -87,8 +77,6 @@ export default function Header() {
                 onClose={() => setShowRegisterModal(false)}
                 onSwitchToLogin={switchToLogin}
             />
-
-            <CartModal />
         </>
     );
 }
